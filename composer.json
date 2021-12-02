@@ -1,0 +1,5 @@
+{
+    "require": {
+        "polkovnik-z/php-docker-client": "^1.41"
+    }
+}
