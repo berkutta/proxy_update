@@ -156,7 +156,7 @@ function getProxyConfigurationObject($docker)
         // Add static hosts
         $static_hosts = json_decode(file_get_contents("static_hosts.json"));
 
-        if (isset($static_host)) {
+        if (isset($static_hosts)) {
             foreach ($static_hosts as $static_host) {
 
                 $endpoint = new stdClass;
