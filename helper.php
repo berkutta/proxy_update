@@ -118,8 +118,19 @@ function getProxyConfigurationObject($docker)
 
         $endpoint = new stdClass;
 
+        if (!isset($container['Id'])) {
+            continue;
+        }
         $endpoint->id = $container['Id'];
+        
+        if (!isset($container['Names'][0])) {
+            continue;
+        }
         $endpoint->name = $container['Names'][0];
+
+        if (!isset($container['NetworkSettings']['Networks']['bridge']['IPAddress'])) {
+            continue;
+        }
         $endpoint->ip = $container['NetworkSettings']['Networks']['bridge']['IPAddress'];
 
         $inspect = $docker->inspectContainer($container['Id']);
