@@ -211,6 +211,15 @@ function getProxyConfigurationString($endpoints)
 
 ";
 
+
+    $config .= "server {
+   listen 80;
+   server_name \"~^www\.(.*)\$\";
+   return 301 https://\$1\$request_uri;
+}
+
+";
+
     if (isset($_ENV["PROXY_DEFAULT_HOST"]) && $_ENV["PROXY_DEFAULT_HOST"]) {
 
         if (
